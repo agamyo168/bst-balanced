@@ -1,0 +1,19 @@
+ void print()
+    {   int count = 0;
+        Node * t = root;
+        int heightLeft =0;
+        int heightRight =0;
+        if(t == nullptr)
+            {cout<<"Oops! Nothing to print here.";
+            return;}
+
+        cout<<"\t\t L0 "<<root->value<<endl;
+        while(t->left != nullptr && t->right != nullptr)
+            printSubTree(t,count,heightLeft,heightRight);
+
+        cout<<"\n heightLeft:"<<heightLeft<<"\theightRight:"<<heightRight;
+
+    }
+
+9
+8 10 14 13 3 6 7 4 1
