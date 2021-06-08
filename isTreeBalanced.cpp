@@ -46,20 +46,27 @@ class Tree
             }
         return count;
     }
-    */int heightSubTree(Node * soot,int count)
-    {   count++;
+    */
+   int heightLeft(Node * soot)
+    {   
         if(soot == nullptr)
             return 0;
-        if(soot->left != nullptr)
-            cout<<"\tL"<<count<<" "<<soot->left->value<<"\t";
-        if(soot->right !=nullptr)
-            {cout<<"L"<<count<<" "<<soot->right->value<<"\t";}
-        heightSubTree(soot->left,count);
-        heightSubTree(soot->right,count);
-
-
-
+        int count = 0;
+        if(soot->left!= nullptr)
+          count = 1+ heightLeft(soot->left);
+        return count;
     }
+    int heightRight(Node * soot)
+    {   
+        
+        if(soot == nullptr)
+            return 0;
+        int count = 0;
+        if(soot ->right !=nullptr)
+            count = 1+heightRight(soot->right);
+        return count;
+    }
+    
     public:
     Tree()
     {
@@ -81,29 +88,18 @@ class Tree
 
     }
 
-  bool isBalanced(Node * root)
-    {  
-         if(root == nullptr)
-        {
+    bool isBalanced(Node * soot)
+    {   if(soot == nullptr)
             return true;
-        }
-        int count = 0;
-        int heightLeft= heightSubTree(root->left,count);
-        int heightRight= heightSubTree(root->right,count);
-
-
-        if(abs(heightLeft-heightRight) <= 1 && isBalanced(root->left) && isBalanced(root->right))
+        int leftHeight = heightLeft(soot);
+        int rightHeight = heightRight(soot);
+        if(abs(leftHeight - rightHeight)<= 1 &&isBalanced(soot->left) && isBalanced(soot->right))
             return true;
-
+        
         return false;
-
-
-
     }
-
-
 };
-
+   
 int main()
 {
     Tree t1;
@@ -117,13 +113,9 @@ int main()
         t1.insert(x);
 
     }
-
-    cout<<endl;
-   if(t1.isBalanced(t1.getRoot()))
-        cout<<"YES";
-    else
-        cout<<"NO";
-
-
+    if(t1.isBalanced(t1.getRoot()))
+        {cout<<"YES";
+        return 0;}
+    cout<<"NO";
     return 0;
 }
