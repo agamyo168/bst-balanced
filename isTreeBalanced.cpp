@@ -31,22 +31,6 @@ class Tree
 
 
     }
-   /* int heightSubTree(Node * soot, int count)
-    {
-        if(soot == nullptr)
-            return 0;
-        count++;
-        if(soot->left != nullptr)
-            {heightSubTree(soot->left, count);
-                cout<<soot->value<<endl;
-            }
-        if(soot->right !=nullptr)
-            {
-            heightSubTree(soot->right,count);
-            }
-        return count;
-    }
-    */
    int heightLeft(Node * soot)
     {   
         if(soot == nullptr)
