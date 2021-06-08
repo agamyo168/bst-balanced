@@ -19,7 +19,7 @@ class Tree
     void insertNode(int x,Node * t)
     {
         if(x < t->value&&t->left == nullptr)
-            {   
+            {
                 t->left = new Node(x);}
         else if(x > t->value && t->right == nullptr)
             {
@@ -32,7 +32,7 @@ class Tree
 
     }
    int heightLeft(Node * soot)
-    {   
+    {
         if(soot == nullptr)
             return 0;
         int count = 0;
@@ -41,8 +41,8 @@ class Tree
         return count;
     }
     int heightRight(Node * soot)
-    {   
-        
+    {
+
         if(soot == nullptr)
             return 0;
         int count = 0;
@@ -50,7 +50,7 @@ class Tree
             count = 1+heightRight(soot->right);
         return count;
     }
-    
+
     public:
     Tree()
     {
@@ -77,17 +77,15 @@ class Tree
             return true;
         int leftHeight = heightLeft(soot);
         int rightHeight = heightRight(soot);
-        if(abs(leftHeight - rightHeight)<= 1 &&isBalanced(soot->left) && isBalanced(soot->right))
-            return true;
-        
+        if(abs(leftHeight - rightHeight)<= 1)
+            return isBalanced(soot->left)&&isBalanced(soot->right);
         return false;
     }
 };
-   
+
 int main()
 {
     Tree t1;
-    //int level;
     int size;
     cin>>size;
     int x;
